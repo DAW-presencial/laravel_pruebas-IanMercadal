@@ -21,16 +21,15 @@ return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 // Contactos
-Route::get('/contactos', function () {
-    return view('contactos.index');
-})->middleware(['auth'])->name('login.index');
 
-Route::get('/contactos',[ContactosController::class, 'index'])->name('contactos.index');
-Route::get('/contactos/create',[ContactosController::class, 'create'])->name('contactos.create');
-Route::post('/contactos',[ContactosController::class, 'store'])->name('contactos.store');
-Route::get('/contactos/{contacto}',[ContactosController::class, 'show'])->name('contactos.show');
-Route::get('/contactos/{contacto}/edit',[ContactosController::class, 'edit'])->name('contactos.edit');
-Route::put('/contactos/{contacto}',[ContactosController::class, 'update'])->name('contactos.update');
-Route::delete('/contacto/{contacto}', [ContactosController::class,'destroy'])->name('contactos.destroy');
+Route::group(['prefix' => '/contactos', 'middleware' => 'auth'],(function () {
+    Route::get('/',[ContactosController::class, 'index'])->name('contactos.index');
+    Route::get('/create',[ContactosController::class, 'create'])->name('contactos.create');
+    Route::post('/',[ContactosController::class, 'store'])->name('contactos.store');
+    Route::get('/{contacto}',[ContactosController::class, 'show'])->name('contactos.show');
+    Route::get('/{contacto}/edit',[ContactosController::class, 'edit'])->name('contactos.edit');
+    Route::put('/{contacto}',[ContactosController::class, 'update'])->name('contactos.update');
+    Route::delete('/{contacto}', [ContactosController::class,'destroy'])->name('contactos.destroy');
+}));
 
 require __DIR__.'/auth.php';

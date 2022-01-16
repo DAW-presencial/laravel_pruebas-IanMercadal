@@ -12,7 +12,7 @@
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             <h1>Agenda de Contactos</h1>
             @auth
-                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                <button class="btn btn-outline-primary"><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></button>
             @else
                 <button class="btn btn-outline-primary"><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></button>
         

@@ -25,6 +25,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('entrar', function(){
+            if(!Gate::allows('entrar')){
+                abort(403);
+            } else {
+                return true;
+            }
+        });
     }
 }

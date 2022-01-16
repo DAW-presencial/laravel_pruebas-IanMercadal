@@ -11,6 +11,7 @@
                 <tr class="text-center">
                     <th scope="col">Contacto</th>
                     <th scope="col">Teléfono</th>
+                    <th> <button class="btn btn-primary"><a class="text-white" href="{{route('contactos.create')}}">Crear contacto</a></button></th>
                 </tr>
             </thead>
                 @foreach($contactos as $contacto)
