@@ -17,7 +17,20 @@ class ContactosController extends Controller
     }
 
     public function store(Request $request) {
+        // Validacion de todo rellenado
+        $request->validate([
+            'name'=> 'required|max:20',
+            'numero'=> 'required|max:12',
+        ]);
+
+        $contacto = new Contacto;
         
+        $contacto->name = $request->name;
+        $contacto->numero = $request->numero;
+
+        $contacto->save();
+        return redirect()->route('contactos.show', $contacto);
+
     }
     public function show(Contacto $contacto) {
         return view('contactos.show',compact('contacto'));
