@@ -32,7 +32,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Actualizar contacto</h5>
                         <p class="card-text">Editar algún contacto.</p>
-                        <a href="{{route('contactos.edit')}}" class="btn btn-primary">Ir</a>
+                        <a href="{{route('contactos.index')}}" class="btn btn-primary">Ir</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Eliminar contacto</h5>
                         <p class="card-text">Eliminar algún contacto.</p>
-                        <a href="{{route('contactos.show')}}" class="btn btn-primary">Ir</a>
+                        <a href="{{route('contactos.index')}}" class="btn btn-primary">Ir</a>
                     </div>
                 </div>
             </div>

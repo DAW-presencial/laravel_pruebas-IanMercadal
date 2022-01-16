@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 class ContactosController extends Controller
 {
     public function index() {
-        return view('contactos.index');
+
+        // Ordenar
+        $contactos = Contacto::all();
+
+        return view('contactos.index', compact('contactos'));
     }
     public function create() {
         return view('contactos.create');
