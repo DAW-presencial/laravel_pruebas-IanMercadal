@@ -31,5 +31,6 @@ Route::post('/contactos',[ContactosController::class, 'store'])->name('contactos
 Route::get('/contactos/{contacto}',[ContactosController::class, 'show'])->name('contactos.show');
 Route::get('/contactos/{contacto}/edit',[ContactosController::class, 'edit'])->name('contactos.edit');
 Route::put('/contactos/{contacto}',[ContactosController::class, 'update'])->name('contactos.update');
+Route::delete('/contacto/{contacto}', [ContactosController::class,'destroy'])->name('contactos.destroy');
 
 require __DIR__.'/auth.php';

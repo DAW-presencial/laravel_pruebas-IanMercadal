@@ -7,4 +7,10 @@
 
     <div class="container">
     </div>
+
+    <form action="{{route('contactos.destroy',$contacto)}}" method="post">
+        @csrf
+        @method('delete')
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
 @endsection

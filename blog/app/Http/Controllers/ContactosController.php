@@ -12,15 +12,19 @@ class ContactosController extends Controller
     public function create() {
         return view('contactos.create');
     }
-    public function store() {
+    public function store(Request $request) {
         
     }
-    public function show() {
+    public function show(Contacto $contacto) {
         return view('contactos.show');
     }
-    public function edit() {
+    public function edit(Contacto $contacto) {
         return view('contactos.edit');
     }
-    public function update() {
+    public function update(Request $request,Contacto $contacto) {
+    }
+    public function destroy(Contacto $contacto) {
+        $contacto->delete();
+        return redirect()->route('contactos.index');
     }
 }
