@@ -25,7 +25,7 @@ Route::get('/contactos', function () {
     return view('contactos.index');
 })->middleware(['auth'])->name('login.index');
 
-Route::get('/contactos/ver',[ContactosController::class, 'index'])->name('contactos.index');
+Route::get('/contactos',[ContactosController::class, 'index'])->name('contactos.index');
 Route::get('/contactos/create',[ContactosController::class, 'create'])->name('contactos.create');
 Route::post('/contactos',[ContactosController::class, 'store'])->name('contactos.store');
 Route::get('/contactos/{contacto}',[ContactosController::class, 'show'])->name('contactos.show');
