@@ -1,13 +1,51 @@
-<h1>Index</h1>
+@extends('layouts.plantilla')
 
-<div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-    @auth
-        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-    @else
-        <button class="btn btn-outline-primary"><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></button>
+@section('title','Index')
 
-        @if (Route::has('register'))
-        <button class="btn btn-outline-primary"><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></button>
-        @endif
-    @endauth
-</div>
+@section('content')
+    <h1 class="text-center">Index</h1>
+
+    <div class="container">
+        <div class="row m-1">
+            <div class="col-sm-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Ver contactos</h5>
+                        <p class="card-text">Ver los contactos.</p>
+                        <a href="#" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-sm-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Crear contacto</h5>
+                        <p class="card-text">Crea algún contacto.</p>
+                        <a href="#" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-sm-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Actualizar contacto</h5>
+                        <p class="card-text">Editar algún contacto.</p>
+                        <a href="#" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-sm-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Eliminar contacto</h5>
+                        <p class="card-text">Eliminar algún contacto.</p>
+                        <a href="#" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
