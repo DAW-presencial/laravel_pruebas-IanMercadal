@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Contacto;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class ContactoController extends Controller
 {
-    public function index() {
+    public function index(Request $request,) {
+        // $contactos = Contacto::where('user_id', Auth::id())->latest()->paginate(5);
         $contactos = Contacto::all();
         return view('contactos.index', compact('contactos'));
     }
@@ -25,9 +26,10 @@ class ContactoController extends Controller
         ]);
 
         $contacto = new Contacto;
-        
+
         $contacto->name = $request->name;
         $contacto->numero = $request->numero;
+        $contacto->user_id = $request->user()->id;
 
         $contacto->save();
         return redirect()->route('contactos.show', $contacto);
@@ -45,12 +47,6 @@ class ContactoController extends Controller
             'name'=> 'required|max:20',
             'numero'=> 'required|max:12',
         ]);
-
-        // Gate 
-
-        if(Gate::denies('update-contacto', $contacto)) {
-            abort(403, "No puedes editar este post");
-        }
 
         $contacto->name = $request->name;
         $contacto->numero = $request->numero;
