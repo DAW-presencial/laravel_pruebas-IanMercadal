@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contacto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ContactosController extends Controller
 {
@@ -44,6 +45,12 @@ class ContactosController extends Controller
             'name'=> 'required|max:20',
             'numero'=> 'required|max:12',
         ]);
+
+        // Gate 
+
+        if(Gate::denies('update-contacto', $contacto)) {
+            abort(403, "No puedes editar este post");
+        }
 
         $contacto->name = $request->name;
         $contacto->numero = $request->numero;
