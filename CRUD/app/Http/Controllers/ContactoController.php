@@ -43,12 +43,13 @@ class ContactoController extends Controller
         return view('contactos.edit', compact('contacto'));
     }
     public function update(Request $request, Contacto $contacto) {
-        // Validacion de todo rellenado
-
+        
+        // $this->authorize('update-contacto', $contacto);
         if(Gate::denies('update-contacto', $contacto)) {
             abort(403, "No puedes actualizar el contacto");
         }
 
+        // Validacion de todo rellenado
         $request->validate([
             'name'=> 'required|max:20',
             'numero'=> 'required|max:12',
@@ -62,9 +63,10 @@ class ContactoController extends Controller
     }
     public function destroy(Contacto $contacto) {
 
-        if(Gate::denies('destroy-contacto', $contacto)) {
-            abort(403, "No puedes eliminar el contacto");
-        }
+        $this->authorize('destroy-contacto', $contacto);
+        // if(Gate::denies('destroy-contacto', $contacto)) {
+        //     abort(403, "No puedes eliminar el contacto");
+        // }
 
         $contacto->delete();
         return redirect()->route('contactos.index');
