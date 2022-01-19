@@ -5,6 +5,7 @@ use App\Models\Contacto;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ContactoController extends Controller
 {
@@ -43,6 +44,11 @@ class ContactoController extends Controller
     }
     public function update(Request $request, Contacto $contacto) {
         // Validacion de todo rellenado
+
+        if(Gate::denies('update-contacto', $contacto)) {
+            abort(403, "No puedes actualizar el contacto");
+        }
+
         $request->validate([
             'name'=> 'required|max:20',
             'numero'=> 'required|max:12',
@@ -55,6 +61,11 @@ class ContactoController extends Controller
         return redirect()->route('contactos.show', $contacto);
     }
     public function destroy(Contacto $contacto) {
+
+        if(Gate::denies('destroy-contacto', $contacto)) {
+            abort(403, "No puedes eliminar el contacto");
+        }
+
         $contacto->delete();
         return redirect()->route('contactos.index');
     }
