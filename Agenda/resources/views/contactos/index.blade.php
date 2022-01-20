@@ -21,29 +21,17 @@
                     @endcannot
                 </tr>
             </thead>
+            <tbody>
                 @foreach($contactos as $contacto)
                 <tr class="text-center">
-                    <td>{{ $contacto->id}}</td>
+                    <td>{{ $contacto->user_id}}</td>
                     <td>{{ $contacto->name}}</td>
                     <td>{{ $contacto->phone}}</td>
                     <td>
-                        @can('update', $contacto)
                         <a href="{{route('contactos.edit', $contacto->id)}}"><button class="btn btn-primary">Editar</button></a>
-                        @endcan
-                        
-                        @cannot('update', $contacto)
-                        <p>No puedes editar</p>
-                        @endcannot
-                    </td>  
-                    {{-- @can('update', $contacto)
-                        <td><a href="{{route('contactos.edit', $contacto->id)}}"><button class="btn btn-primary">Editar</button></a></td>  
-                    @endcan --}}
+                    </td>
                 </tr>
                 @endforeach
-
-
-            <tbody>
-
             </tbody>
         </table>
     </div>
