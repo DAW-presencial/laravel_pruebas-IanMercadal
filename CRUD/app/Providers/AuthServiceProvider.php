@@ -25,18 +25,23 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::before(function($user, $permisos){
-            if($user->is_admin && in_array($permisos, ['update-contacto', 'destroy-contacto'])) {
-                return true;
-            }
-        });
+        // Gate::define('contactos.update', 'App\Policies\ContactoPolicy@update');
+        // Gate::define('contactos.delete', 'App\Policies\ContactoPolicy@delete');
 
-        Gate::define('update-contacto',function($user, $contacto){
-            return $user->id == $contacto->user_id;
-        });
+        Gate::resource('contactos', 'App\Policies\ContactoPolicy');
 
-        Gate::define('destroy-contacto',function($user, $contacto){
-            return $user->id == $contacto->user_id;
-        });
+        // Gate::before(function($user, $permisos){
+        //     if($user->is_admin && in_array($permisos, ['contactos.update'])) {
+        //         return true;
+        //     }
+        // });
+
+        // Gate::define('update-contacto',function($user, $contacto){
+        //     return $user->id == $contacto->user_id;
+        // });
+
+        // Gate::define('destroy-contacto',function($user, $contacto){
+        //     return $user->id == $contacto->user_id;
+        // });
     }
 }
