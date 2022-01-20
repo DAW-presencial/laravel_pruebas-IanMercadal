@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Contacto;
 use App\Models\User;
-use App\Policies\ContactosPolicy;
+use App\Policies\ContactoPolicy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -17,6 +17,7 @@ class ContactoController extends Controller
     }
 
     public function create() {
+        $this->authorize('contactos.create');
         return view('contactos.create');
     }
 
@@ -45,9 +46,7 @@ class ContactoController extends Controller
     }
     public function update(Request $request, Contacto $contacto) {
 
-        if(Gate::denies('update-contacto', $contacto)) {
-            abort(403);
-        }
+        $this->authorize('contactos.update', $contacto);
 
         // Validacion de todo rellenado
         $request->validate([
@@ -63,9 +62,11 @@ class ContactoController extends Controller
     }
     public function destroy(Contacto $contacto) {
 
-        if(Gate::denies('delete-contacto', $contacto)) {
-            abort(403);
-        }
+        $this->authorize('contactos.delete', $contacto);
+
+        // if(Gate::denies('delete-contacto', $contacto)) {
+        //     abort(403);
+        // }
         $contacto->delete();
         return redirect()->route('contactos.index');
     }

@@ -6,7 +6,7 @@ use App\Models\Contacto;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ContactosPolicy
+class ContactoPolicy
 {
     use HandlesAuthorization;
 
@@ -41,7 +41,11 @@ class ContactosPolicy
      */
     public function create(User $user)
     {
-        return true;
+        if($user->user_role == 'viewer') {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -54,11 +58,6 @@ class ContactosPolicy
     public function update(User $user, Contacto $contacto)
     {
         return $user->id == $contacto->user_id;
-        // if ($user->id == $contacto->user_id){
-        //     return true;
-        // } else{
-        //     return false;
-        // };
     }
 
     /**
@@ -71,7 +70,6 @@ class ContactosPolicy
     public function delete(User $user, Contacto $contacto)
     {
         return $user->id == $contacto->user_id;
-        // return $user->id == $contacto->user_id;
     }
 
     /**

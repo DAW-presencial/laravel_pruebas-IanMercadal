@@ -16,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        'App\Models\Contacto' => 'App\Policies\ContactosPolicy'
+        'App\Models\Contacto' => 'App\Policies\ContactoPolicy'
     ];
 
     /**
@@ -28,13 +28,25 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('update-contacto',function($user, $contacto){
-            return $user->id == $contacto->user_id;
-        });
+        // Gate::define('update-contacto',function($user, $contacto){
+        //     return $user->id == $contacto->user_id;
+        // });
 
-        Gate::define('delete-contacto',function($user, $contacto){
-            return $user->id == $contacto->user_id;
-        });
+        // Gate::define('delete-contacto',function($user, $contacto){
+        //     return $user->id == $contacto->user_id;
+        // });
+
+        // Gate::define('contactos.update','App\Policies\ContactoPolicy@update');
+        // Gate::define('contactos.delete','App\Policies\ContactoPolicy@delete');
+
+        Gate::resource('contactos','App\Policies\ContactoPolicy');
+
+        // Gate::before(function($user,$ability){
+        //     if($user->user_role == 'super_admin' && in_array($ability,['contactos.update','contactos.delete'])){
+        //         return true;
+        //     }
+        // });
+
         // Gate::resource('contactos', 'App\Policies\ContactosPolicy');
     }
 }
