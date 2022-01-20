@@ -57,7 +57,11 @@ class ContactoPolicy
      */
     public function update(User $user, Contacto $contacto)
     {
-        return $user->id == $contacto->user_id;
+        if ($user->id == $contacto->user_id || $user->user_role == 'super_admin' || $user->user_role == 'admin') {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -69,7 +73,11 @@ class ContactoPolicy
      */
     public function delete(User $user, Contacto $contacto)
     {
-        return $user->id == $contacto->user_id;
+        if ($user->id == $contacto->user_id || $user->user_role == 'super_admin' || $user->user_role == 'admin') {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
