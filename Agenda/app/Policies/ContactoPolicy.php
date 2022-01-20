@@ -41,7 +41,7 @@ class ContactoPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -69,7 +69,7 @@ class ContactoPolicy
      */
     public function delete(User $user, Contacto $contacto)
     {
-        //
+        return $user->id == $contacto->user_id;
     }
 
     /**
