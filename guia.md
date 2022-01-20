@@ -10,7 +10,6 @@ composer create-project laravel/laravel x
 4. - npm run dev
 5. - php artisan migrate (La bd ya debe estar creada)
 
-
 ## Controller
 php artisan make:controller xController
 
@@ -31,3 +30,6 @@ php artisan make:seeder xSeeder
 ## Factory
 1. - php artisan make:factory xFactory
 2. - php artisan migrate:fresh --seed
+
+## Listar routes
+php artisan route:list
