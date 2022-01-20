@@ -16,7 +16,7 @@ class ContactoController extends Controller
         return view('contactos.index', compact('contactos'));
     }
 
-    public function create() {
+    public function create(Contacto $contacto) {
         $this->authorize('contactos.create');
         return view('contactos.create');
     }
@@ -35,7 +35,7 @@ class ContactoController extends Controller
         $contacto->user_id = $request->user()->id;
 
         $contacto->save();
-        return redirect()->route('contactos.show', $contacto);
+        return redirect()->route('contactos.index', $contacto);
 
     }
     public function show(Contacto $contacto) {
@@ -58,7 +58,7 @@ class ContactoController extends Controller
         $contacto->phone = $request->phone;
 
         $contacto->save();
-        return redirect()->route('contactos.show', $contacto);
+        return redirect()->route('contactos.index', $contacto);
     }
     public function destroy(Contacto $contacto) {
 

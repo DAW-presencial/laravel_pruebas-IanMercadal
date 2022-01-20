@@ -38,7 +38,10 @@
             </div>
 
             <br>
-            <button class="btn btn-success p-1 mb-2" type="submit">Actualizar</button>
+
+            <button class="btn btn-success p-1 mb-2" type="submit">Actualizar Contacto</button>
+            <button class="btn btn-danger p-1 mb-2"><a class="text-white" href="{{route('contactos.show',$contacto->id)}}">Eliminar contacto</a></button>
+
         </form>
     </div>
 @endsection

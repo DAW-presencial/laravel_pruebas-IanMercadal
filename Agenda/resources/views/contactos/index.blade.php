@@ -12,13 +12,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Contacto</th>
                     <th scope="col">Teléfono</th>
-                    @can('create', $contactos)
-                        <th> <button class="btn btn-primary"><a class="text-white" href="{{route('contactos.create')}}">Crear contacto</a></button></th>      
-                    @endcan
-
-                    @cannot('create', $contactos)
-                        <th> No pueder crear</th>      
-                    @endcannot
+                    <th><button class="btn btn-primary"><a class="text-white" href="{{route('contactos.create')}}">Crear contacto</a></button></th>      
                 </tr>
             </thead>
             <tbody>
