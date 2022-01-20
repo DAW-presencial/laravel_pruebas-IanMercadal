@@ -17,7 +17,7 @@
                     @endcan
 
                     @cannot('create', $contactos)
-                        <th> <button class="btn btn-primary"><a class="text-white" href="{{route('contactos.create')}}">Crear contacto</a></button></th>      
+                        <th> No pueder crear</th>      
                     @endcannot
                 </tr>
             </thead>
@@ -28,7 +28,13 @@
                     <td>{{ $contacto->name}}</td>
                     <td>{{ $contacto->phone}}</td>
                     <td>
-                        <a href="{{route('contactos.edit', $contacto->id)}}"><button class="btn btn-primary">Editar</button></a>
+                        @can('update', $contacto)
+                            <a href="{{route('contactos.edit', $contacto->id)}}"><button class="btn btn-primary">Editar</button></a>
+                        @endcan 
+
+                        @cannot('update', $contacto)
+                            <p>No puedes editar</p>
+                        @endcannot
                     </td>
                 </tr>
                 @endforeach
