@@ -23,6 +23,12 @@ php artisan make:model Contacto
 
 ## Migrar
 php artisan migrate 
+php artisan make:migration add_x_to_table_x
+php artisan make:fresh --seed
+
+### Valor por default en migracion y valor por defecto en factory
+$table->string('user_role')->default('propietario');
+'user_role' => $this->faker->randomElement(['super_admin','admin','propietario','cliente'])
 
 ## Seeder
 php artisan make:seeder xSeeder
