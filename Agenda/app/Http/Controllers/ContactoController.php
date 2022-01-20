@@ -7,6 +7,7 @@ use App\Policies\ContactoPolicy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Requests\StoreContacto;
 
 class ContactoController extends Controller
 {
@@ -21,13 +22,8 @@ class ContactoController extends Controller
         return view('contactos.create');
     }
 
-    public function store(Request $request) {
-        // Validacion de todo rellenado
-        $request->validate([
-            'name'=> 'required|max:20',
-            'phone'=> 'required|max:12',
-        ]);
-
+    public function store(StoreContacto $request) {
+        
         $contacto = new Contacto;
 
         $contacto->name = $request->name;
