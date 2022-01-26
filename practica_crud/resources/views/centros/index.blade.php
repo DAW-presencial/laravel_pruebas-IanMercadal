@@ -9,34 +9,34 @@
             @csrf
             
             <div class="form-group m-2">
-                <label>Nombre: <br> <input class="form-control" type="text" name="name" value=""></label>
+                <label>Nombre: <br> <input class="form-control" type="text" name="name" value="{{ old('name') }}"></label>
             </div>
     
             <div class="form-group m-2">
-                <label>Capacidad: <br> <input type="number" class="form-control" name="capacidad" value=""></label>
+                <label>Capacidad: <br> <input type="number" class="form-control" name="capacidad" value="{{ old('capacidad') }}"></label>
             </div>
     
             <div class="form-group m-2">
-                <label>Fundado: <br> <input type="date" class="form-control" name="fundado" value=""> </label>
+                <label>Fundado: <br> <input type="date" class="form-control" name="fundado" value="{{ old('fundado', date('Y-m-d')) }}"></label>
             </div>
     
             <div class="form-group m-2">
                 <label>Estudios:</label>
             
                 <ul>
-                    <li><label>Primaria: <input type="checkbox" name="primaria"></label></li>
-                    <li><label>ESO: <input type="checkbox" name="eso"></label></li>
-                    <li><label>FP: <input type="checkbox" name="fp"></label></li>
-                    <li><label>Universidad: <input type="checkbox" name="universidad"></label></li>
+                    <li><label>Primaria: <input type="checkbox" name="primaria" value="primaria" {{old('primaria' == 'primaria') ? 'checked' : "" }}></label></li>
+                    <li><label>ESO: <input type="checkbox" name="eso" value="eso" {{old('eso' == 'eso') ? 'checked' : "" }}></label></li>
+                    <li><label>FP: <input type="checkbox" name="fp" value="fp" {{old('fp' == 'fp') ? 'checked' : "" }}></label></li>
+                    <li><label>Universidad: <input type="checkbox" name="universidad" value="universidad" {{old('universidad' == 'universidad') ? 'checked' : "" }}></label></li>
                 </ul>
             </div>
     
             <div class="form-group m-2">
                 <label>Entidad:</label>
                 <br> 
-                    <label for="html">Pública<input type="radio" name="entidad" value="publica"></label><br>
-                    <label for="html">Privada<input type="radio" name="entidad" value="privada"></label><br>
-                    <label for="html">Concertada<input type="radio" name="entidad" value="concertada"></label><br>
+                    <label>Pública<input type="radio" name="entidad" value="publica" {{old('entidad' == 'publica') ? 'checked' : "" }} ></label><br>
+                    <label>Privada<input type="radio" name="entidad" value="privada" {{old('entidad' == 'privada') ? 'checked' : "" }}></label><br>
+                    <label>Concertada<input type="radio" name="entidad" value="concertada" {{old('entidad' == 'concertada') ? 'checked' : "" }}></label><br>
                 <br>
             </div>
     
@@ -47,9 +47,9 @@
     
                 <select name="extraEscolar" id="extraEscolar">
                     <option value="">--Selecciona una opcion--</option>
-                    <option value="futbol">Fútbol</option>
-                    <option value="baile">Baile</option>
-                    <option value="repaso">Repaso</option>
+                    <option value="futbol" @if (old('extraEscolar' == 'futbol')) selected @endif> Fútbol</option>
+                    <option value="baile" @if (old('extraEscolar' == 'baile')) selected @endif>Baile</option>
+                    <option value="repaso" @if (old('extraEscolar' == 'repaso')) selected @endif>Repaso</option>
                 </select>
             </div>
     
