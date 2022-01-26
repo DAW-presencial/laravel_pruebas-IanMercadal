@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTableCentros extends Migration
+class ModifyTableCentros extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class AddTableCentros extends Migration
      */
     public function up()
     {
-        Schema::create('centros', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name'); // Text
-            $table->string('Estudios'); // Checkbox-> Primaria, ESO, FP o Universidad
-            $table->timestamps();
+        Schema::table('centros', function (Blueprint $table) {
+            $table->string('descripcion'); // Textarea
+            $table->integer('capacidad'); // Number
+            $table->string('entidad'); // RadioButton -> Publica, privada o concertada
+            $table->string('extra_escolar'); // Select
         });
     }
 
