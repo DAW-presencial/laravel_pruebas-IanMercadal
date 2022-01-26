@@ -12,6 +12,7 @@ composer create-project laravel/laravel x
 
 ## Controller
 php artisan make:controller xController
+php artisan make:controller xController --resource
 
 ## Bootsrap
 1. - npm install bootstrap
@@ -19,7 +20,7 @@ php artisan make:controller xController
 (Insertar link en layout plantilla )
 
 ## Crear modelo
-php artisan make:model Contacto
+php artisan make:model x
 
 ## Migrar
 php artisan migrate 
@@ -39,3 +40,13 @@ php artisan make:seeder xSeeder
 
 ## Listar routes
 php artisan route:list
+
+## Request comando 
+php artisan make:request StoreRequest
+
+## Resources comando
+php artisan make:controller PhotoController --model=Photo --resource
+
+## Lenguajes comando
+composer require laravel-lang/publisher
+php artisan lang:add es
