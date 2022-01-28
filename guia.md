@@ -48,5 +48,5 @@ php artisan make:request StoreRequest
 php artisan make:controller PhotoController --model=Photo --resource
 
 ## Lenguajes comando
-composer require laravel-lang/publisher
+composer require laravel-lang/lang
 php artisan lang:add es
