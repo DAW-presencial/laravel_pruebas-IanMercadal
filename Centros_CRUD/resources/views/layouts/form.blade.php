@@ -39,9 +39,9 @@
 <div class="form-group m-2">
     <label>Entidad:</label>
     <br> 
-        <label>Pública<input type="radio" name="entidad" value="publica" {{old('entidad' == 'publica') ? 'checked' : "" }} ></label><br>
-        <label>Privada<input type="radio" name="entidad" value="privada" {{old('entidad' == 'privada') ? 'checked' : "" }}></label><br>
-        <label>Concertada<input type="radio" name="entidad" value="concertada" {{old('entidad' == 'concertada') ? 'checked' : "" }}></label><br>
+        <label>Pública<input type="radio" name="entidad" value="publica" {{ old('entidad')=="publica" ? 'checked='.'"checked"' : '' }} ></label><br>
+        <label>Privada<input type="radio" name="entidad" value="privada" {{old('entidad') == "privada" ? 'checked='.'"checked"' : '' }}></label><br>
+        <label>Concertada<input type="radio" name="entidad" value="concertada" {{old('entidad') == "concertada" ? 'checked='.'"checked"' : '' }}></label><br>
     <br>
     @error('entidad')
         <br>
@@ -51,22 +51,24 @@
 </div>
 
 <div class="form-group m-2">
-    <label>ExtraEscolar:</label>
+    <label>Extra Escolar:</label>
     <br>
     <label for="extra-select">Selecciona</label>
 
-    <select name="extra_escolar" id="extraEscolar">
+    <select name="extraescolar">
         <option value="">--Selecciona una opcion--</option>
-        <option value="futbol" @if (old('extra_escolar' == 'futbol')) selected @endif> Fútbol</option>
-        <option value="baile" @if (old('extra_escolar' == 'baile')) selected @endif>Baile</option>
-        <option value="repaso" @if (old('extra_escolar' == 'repaso')) selected @endif>Repaso</option>
+        <option value="futbol" @if (old('extraescolar' == 'futbol')) selected @endif> Fútbol</option>
+        <option value="baile" @if (old('extraescolar' == 'baile')) selected @endif>Baile</option>
+        <option value="repaso" @if (old('extraescolar' == 'repaso')) selected @endif>Repaso</option>
     </select>
 </div>
 
 <div class="form-group m-2">
     <label>Descripcion:</label>
     <br>
-    <textarea name="descripcion" rows="5" required></textarea>
+    <textarea name="descripcion" rows="5" required>
+        {{{ old('descripcion') }}}
+    </textarea>
 
     @error('descripcion')
         <br>

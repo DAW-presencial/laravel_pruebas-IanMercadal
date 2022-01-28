@@ -15,7 +15,7 @@ class Centro extends Model
         'fundado',
         'terminos'=> 'boolean',
         'entidad',
-        'extraEscolar',
+        'extraescolar',
         'descripcion'
     ];
 }

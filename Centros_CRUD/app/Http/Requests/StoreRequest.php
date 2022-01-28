@@ -32,11 +32,4 @@ class StoreRequest extends FormRequest
             'terminos'=>'required'
         ];
     }
-    public function messages()
-    {
-        return [
-            'name.required' => 'A title is required',
-            'descripcion.required' => 'A message is required',
-        ];
-    }
 }

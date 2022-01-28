@@ -14,7 +14,7 @@ class Centro extends Model
         'descripcion',
         'capacidad',
         'entidad',
-        'extraEscolar',
+        'extraescolar',
         'fundado',
         'terminos'=> 'boolean',
     ];

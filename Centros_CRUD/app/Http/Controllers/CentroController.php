@@ -62,7 +62,6 @@ class CentroController extends Controller
      */
     public function edit(Centro $centro)
     {
-        var_dump($centro->attributesToArray());
         return view('centros.edit',compact('centro'));
     }
 
