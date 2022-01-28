@@ -1,13 +1,13 @@
 <div class="form-group m-2">
-    <label>Nombre: <br> <input class="form-control" type="text" name="name" value="{{ old('name') }}" required></label>
+    <label>Nombre: <br> <input class="form-control" type="text" name="name" value="{{ old('name'), $centro->name }}" required></label>
 </div>
 
 <div class="form-group m-2">
-    <label>Capacidad: <br> <input type="number" class="form-control" name="capacidad" value="{{ old('capacidad') }}" required></label>
+    <label>Capacidad: <br> <input type="number" class="form-control" name="capacidad" value="{{ old('capacidad'), $centro->capacidad }}" required></label>
 </div>
 
 <div class="form-group m-2">
-    <label>Fundado: <br> <input type="date" class="form-control" name="fundado" value="{{ old('fundado', date('Y-m-d')) }}"></label>
+    <label>Fundado: <br> <input type="date" class="form-control" name="fundado" value="{{ old('fundado')}}"></label>
 </div>
 
 <div class="form-group m-2">

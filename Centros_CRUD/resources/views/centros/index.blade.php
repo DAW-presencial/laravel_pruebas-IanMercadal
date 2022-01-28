@@ -20,7 +20,7 @@
                 <td>{{ $centro->name}}</td>
                 <td>{{ $centro->fundado}}</td>
                 <td>
-                {{-- <a href="{{route('centros.edit', $centro->id)}}"><button class="btn btn-primary">Editar</button></a> --}}
+                <a href="{{route('centros.edit', $centro->id)}}"><button class="btn btn-primary">Editar</button></a>
                 </td>
             </tr>
             @endforeach

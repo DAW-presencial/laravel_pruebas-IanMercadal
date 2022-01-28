@@ -23,9 +23,9 @@ class CentroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request  $request)
+    public function create(Centro $centro)
     {
-        return view('centros.create');
+        return view('centros.create', compact('centro'));
     }
 
     /**
@@ -37,7 +37,7 @@ class CentroController extends Controller
     public function store(Request $request)
     {
         $centro = Centro::create($request->all());
-        
+
         // Ya lo hace automatico el create $centro->save();
         return redirect()->route('centros.index', $centro);
     }
@@ -50,7 +50,7 @@ class CentroController extends Controller
      */
     public function show(Centro $centro)
     {
-        //
+        return view('centros.show',compact('centro'));
     }
 
     /**
@@ -61,7 +61,7 @@ class CentroController extends Controller
      */
     public function edit(Centro $centro)
     {
-        //
+        return view('centros.edit',compact('centro'));
     }
 
     /**
@@ -73,7 +73,9 @@ class CentroController extends Controller
      */
     public function update(Request $request, Centro $centro)
     {
-        //
+        $input = $request->all();
+        $centro->fill($input)->save();
+        return redirect()->route('centros.index', $centro);
     }
 
     /**
@@ -84,6 +86,7 @@ class CentroController extends Controller
      */
     public function destroy(Centro $centro)
     {
-        //
+        $centro->delete();
+        return redirect()->route('centros.index');
     }
 }
