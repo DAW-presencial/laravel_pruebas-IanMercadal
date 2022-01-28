@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Centro extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'descripcion',
+        'capacidad',
+        'entidad',
+        'extraEscolar',
+        'fundado',
+        'terminos'=> 'boolean',
+    ];
 }
