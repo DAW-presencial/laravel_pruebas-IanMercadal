@@ -57,9 +57,9 @@
 
     <select name="extraescolar">
         <option value="">--Selecciona una opcion--</option>
-        <option value="futbol" @if (old('extraescolar' == 'futbol')) selected @endif> Fútbol</option>
-        <option value="baile" @if (old('extraescolar' == 'baile')) selected @endif>Baile</option>
-        <option value="repaso" @if (old('extraescolar' == 'repaso')) selected @endif>Repaso</option>
+        <option value="futbol" @if (old('extraescolar' === 'futbol')) selected @endif> futbol</option>
+        <option value="baile" @if (old('extraescolar' === 'baile')) selected @endif>baile</option>
+        <option value="repaso" @if (old('extraescolar' === 'repaso')) selected @endif>repaso</option>
     </select>
 </div>
 

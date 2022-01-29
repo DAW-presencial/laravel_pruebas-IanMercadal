@@ -38,7 +38,9 @@ class CentroController extends Controller
     public function store(StoreRequest $request)
     {
         $centro = Centro::create($request->all());
+        // DB::table('centros')->where('campo', valor)->get();
 
+        // var_dump($request->all());
         // Ya lo hace automatico el create $centro->save();
         return redirect()->route('centros.index', $centro);
     }
