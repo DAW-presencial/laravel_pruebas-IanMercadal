@@ -14,7 +14,8 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        //
+        $contactos = Contacto::all();
+        return view('contactos.index', compact('contactos'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ContactoController extends Controller
      */
     public function create()
     {
-        //
+        return view('contactos.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class ContactoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contacto = Contacto::create($request->all());
+        return redirect()->route('contactos.index', $contacto);
     }
 
     /**
@@ -46,7 +48,7 @@ class ContactoController extends Controller
      */
     public function show(Contacto $contacto)
     {
-        //
+        return view('contactos.show', compact('contacto'));
     }
 
     /**
@@ -57,7 +59,7 @@ class ContactoController extends Controller
      */
     public function edit(Contacto $contacto)
     {
-        //
+        return view('contactos.edit', compact('contacto'));
     }
 
     /**
@@ -69,7 +71,8 @@ class ContactoController extends Controller
      */
     public function update(Request $request, Contacto $contacto)
     {
-        //
+        $contacto->update($request->all());
+        return redirect()->route('contactos.index', $contacto);
     }
 
     /**
@@ -80,6 +83,7 @@ class ContactoController extends Controller
      */
     public function destroy(Contacto $contacto)
     {
-        //
+        $contacto->delete();
+        return redirect()->route('contacto.index');
     }
 }
