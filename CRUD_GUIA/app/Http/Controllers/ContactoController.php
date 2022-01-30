@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Contacto;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class ContactoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         
         $contacto = Contacto::create($request->all());
@@ -71,7 +72,7 @@ class ContactoController extends Controller
      * @param  \App\Models\Contacto  $contacto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contacto $contacto)
+    public function update(StoreRequest $request, Contacto $contacto)
     {
         $contacto->update($request->all());
         return redirect()->route('contactos.index', $contacto);
