@@ -17,6 +17,13 @@
 </head>
 
 <body>
+    <nav>
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Dashboard') }}
+            </h2>
+        </x-slot>
+    </nav>
     <header>
         <div class="container text-center">
             <div class="row m-2">
@@ -36,8 +43,7 @@
                     @endauth
                 </div>
             </div>
-            
-
+        </header>
 
         </div>
     @yield('content')

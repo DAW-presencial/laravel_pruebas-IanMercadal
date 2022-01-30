@@ -12,6 +12,8 @@ class Contacto extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public $table = 'contactos';
+
     protected $fillable = [
     'user_id',
     'nombre',

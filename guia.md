@@ -63,13 +63,15 @@ Poner en filleable los campos de la bd, deben llamarse igual los input names que
 
 protected $fillable = ['name','terminos'=> 'boolean'];
 
+## Policies
+php artisan make:policy PostPolicy --model=Post
+
 
 ## Listar routes
 php artisan route:list
 
 ## Request comando 
 php artisan make:request StoreRequest
-
 
 ## Lenguajes comando
 composer require laravel-lang/lang

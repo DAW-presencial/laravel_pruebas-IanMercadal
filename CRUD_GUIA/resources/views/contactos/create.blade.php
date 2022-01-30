@@ -50,9 +50,9 @@
                 <br>
                 <select name="aficion" id="aficion">
                     <option value="">--Selecciona una opción--</option>
-                    <option value="deporte">Deporte</option>
-                    <option value="arte">Arte</option>
-                    <option value="otro">Otro</option>
+                    <option value="deporte" @if (old('aficion') === 'deporte') selected @endif>Deporte</option>
+                    <option value="arte" @if (old('aficion') === 'arte') selected @endif>Arte</option>
+                    <option value="otro" @if (old('aficion') === 'otro') selected @endif>Otro</option>
                 </select>
             
                 @error('aficion')
@@ -66,14 +66,14 @@
                 <label for="">Sexo:</label>
                 <br>
 
-                <label for="opcion1">Masculino</label>
-                <input type="radio" id="opcion1" name="sexo" value="masculino">
+                <label for="opcion1">Masculino</label>  
+                <input type="radio" id="opcion1" name="sexo" value="masculino" {{ old('sexo') == 'masculino' ? 'checked='.'"checked"' : '' }}>
 
                 <label for="opcion2">Femenino</label>
-                <input type="radio" id="opcion2" name="sexo" value="femenino">
+                <input type="radio" id="opcion2" name="sexo" value="femenino" {{ old('sexo') == 'femenino' ? 'checked='.'"checked"' : '' }}>
 
                 <label for="opcion3">Otro</label>
-                <input type="radio" id="opcion3" name="sexo" value="otro">
+                <input type="radio" id="opcion3" name="sexo" value="otro" {{ old('sexo') == 'otro' ? 'checked='.'"checked"' : '' }}>
 
                 @error('sexo')
                     <br>
@@ -86,7 +86,7 @@
                 <label>Descripcion:</label>
                 <br>
                 <textarea name="descripcion">
-
+                    {{old('descripcion')}}
                 </textarea>
 
                 @error('descripcion')
@@ -98,7 +98,7 @@
 
             <div class="form-group">
                 <label>Aceptar terminos
-                    <input type="checkbox" value="true" name="terminos">
+                    <input type="checkbox" value="true" name="terminos" {{ old('terminos') === 'true' ? 'checked='.'"checked"' : '' }}>
                 </label>
             </div>
 

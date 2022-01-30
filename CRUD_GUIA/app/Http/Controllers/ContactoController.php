@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Contacto;
@@ -16,7 +17,13 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        $contactos = Contacto::all();
+        // if(Gate::allows('viewAll')){
+        //     $contactos = Contacto::with('user')->get();
+        //     return view('contactos.index', compact('contactos'));
+        // }
+
+        $this->authorize('viewAny', Contacto::class);
+        $contactos = Contacto::where('user_id',Auth::id())->get();
         return view('contactos.index', compact('contactos'));
     }
 
@@ -27,6 +34,7 @@ class ContactoController extends Controller
      */
     public function create()
     {
+        $this->authorize('create',Contacto::class);
         return view('contactos.create');
     }
 
@@ -51,6 +59,7 @@ class ContactoController extends Controller
      */
     public function show(Contacto $contacto)
     {
+        $this->authorize('view',Contacto::class);
         return view('contactos.show', compact('contacto'));
     }
 
@@ -62,6 +71,7 @@ class ContactoController extends Controller
      */
     public function edit(Contacto $contacto)
     {
+        $this->authorize('update',Contacto::class);
         return view('contactos.edit', compact('contacto'));
     }
 
@@ -74,6 +84,7 @@ class ContactoController extends Controller
      */
     public function update(StoreRequest $request, Contacto $contacto)
     {
+        $this->authorize('update',Contacto::class);
         $contacto->update($request->all());
         return redirect()->route('contactos.index', $contacto);
     }
@@ -86,6 +97,7 @@ class ContactoController extends Controller
      */
     public function destroy(Contacto $contacto)
     {
+        $this->authorize('delete',Contacto::class);
         $contacto->delete();
         return redirect()->route('contactos.index');
     }
