@@ -76,8 +76,7 @@ class CentroController extends Controller
      */
     public function update(Request $request, Centro $centro)
     {
-        $input = $request->all();
-        $centro->fill($input)->save();
+        $centro->update($request->all());
         return redirect()->route('centros.index', $centro);
     }
 

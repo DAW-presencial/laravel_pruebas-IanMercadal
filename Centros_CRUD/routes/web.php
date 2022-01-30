@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 App::setlocale('es');
 
 // Rutas creadas resource
-Route::resource('centros', CentroController::class);
+Route::resource('centros', CentroController::class)->names('centros');
 
 Route::get('/', function () {
     return view('home');
