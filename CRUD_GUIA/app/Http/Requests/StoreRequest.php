@@ -26,7 +26,7 @@ class StoreRequest extends FormRequest
         return [
             'nombre' => 'required|max:12',
             'nacimiento'=> 'required',
-            'telefono' => 'required|max:12|min:11',
+            'telefono' => 'required|max:10',
             'aficion',
             'sexo'=> 'required',
             'descripcion' => 'required',
