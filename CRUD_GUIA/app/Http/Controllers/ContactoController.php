@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Contacto;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,7 @@ class ContactoController extends Controller
      */
     public function store(Request $request)
     {
+        
         $contacto = Contacto::create($request->all());
         return redirect()->route('contactos.index', $contacto);
     }
@@ -84,6 +86,6 @@ class ContactoController extends Controller
     public function destroy(Contacto $contacto)
     {
         $contacto->delete();
-        return redirect()->route('contacto.index');
+        return redirect()->route('contactos.index');
     }
 }
