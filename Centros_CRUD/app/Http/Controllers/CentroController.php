@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests\StoreRequest;
 use App\Models\Centro;
+use App\Models\Contacto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CentroController extends Controller
 {
@@ -15,6 +16,9 @@ class CentroController extends Controller
      */
     public function index(Request $request)
     {
+        // $this->authorize('viewAny', Centro::class, User::class);
+
+        // $centros = Centro::where('user_id', Auth::id())->get();
         $centros = Centro::all();
         return view('centros.index', compact('centros'));
     }
@@ -26,6 +30,7 @@ class CentroController extends Controller
      */
     public function create(Centro $centro)
     {
+        $this->authorize('create',Contacto::class);
         return view('centros.create', compact('centro'));
     }
 
@@ -53,6 +58,7 @@ class CentroController extends Controller
      */
     public function show(Centro $centro)
     {
+        $this->authorize('view',Contacto::class);
         return view('centros.show',compact('centro'));
     }
 
@@ -88,6 +94,7 @@ class CentroController extends Controller
      */
     public function destroy(Centro $centro)
     {
+        $this->authorize('delete',Contacto::class);
         $centro->delete();
         return redirect()->route('centros.index');
     }
