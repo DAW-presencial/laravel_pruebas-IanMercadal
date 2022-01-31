@@ -2,6 +2,7 @@
 @section('title','Index')
     
 @section('content')
+<h1 class="text-center">Centros</h1>
 <div class="container">
     <table class="table table-dark">
         <thead>
