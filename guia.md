@@ -74,6 +74,11 @@ php artisan route:list
 php artisan make:request StoreRequest
 
 ## Lenguajes comando
-composer require laravel-lang/lang
-php artisan lang:add es
+composer require laraveles/spanish
+php artisan vendor:publish --tag=lang
+Config - app.php
 
+// Ej: español
+'locale'          => 'es',
+
+Utilizar plantilla ya hecha en CRUD_GUIA ya que tiene botones que cambian el idioma
