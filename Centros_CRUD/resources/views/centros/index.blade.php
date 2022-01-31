@@ -21,6 +21,7 @@
                 <td>{{ $centro->fundado}}</td>
                 <td>
                 <a href="{{route('centros.edit', $centro->id)}}"><button class="btn btn-primary">Editar</button></a>
+                <button class="btn btn-danger"><a class="text-white" href="{{route('centros.show',$centro->id)}}">Eliminar</a></button>
                 </td>
             </tr>
             @endforeach
