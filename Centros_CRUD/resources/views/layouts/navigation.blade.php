@@ -37,6 +37,7 @@
                                    aria-haspopup="true" aria-expanded="false" v-pre>
                                     @if (app()->getLocale() === 'en'){{"ENGLISH -"}}{{ __("Language") }}@endif
                                     @if (app()->getLocale() === 'es'){{"ESPAÑOL - "}}{{ __("Language") }}@endif
+                                    @if (app()->getLocale() === 'ca'){{"CATALAN - "}}{{ __("Language") }}@endif
                                 </a>
                             </div>
                         </div>
@@ -45,6 +46,7 @@
                         <div>
                             <x-nav-link :href="route('set_language', ['en'])">{{ __("ENGLISH") }}</x-nav-link>
                             <x-nav-link :href="route('set_language', ['es'])">{{ __("ESPAÑOL") }}</x-nav-link>
+                            <x-nav-link :href="route('set_language', ['ca'])">{{ __("CATALAN") }}</x-nav-link>
                         </div>
                     </x-slot>
                 </x-dropdown>

@@ -57,6 +57,7 @@ php artisan make:seeder xSeeder
 ## Valor por default en migracion y valor por defecto en factory
 $table->string('user_role')->default('propietario');
 'user_role' => $this->faker->randomElement(['super_admin','admin','propietario','cliente'])
+Si quieres utilizar faker con idioma actual, te vas al config/app.php y le cambias en faker_locale
 
 ## Modelo insertar datos
 Poner en filleable los campos de la bd, deben llamarse igual los input names que las columnas de la bd.
@@ -82,3 +83,8 @@ Config - app.php
 'locale'          => 'es',
 
 Utilizar plantilla ya hecha en CRUD_GUIA ya que tiene botones que cambian el idioma
+
+Modo rafa:
+composer require laravel-lang/lang (Idiomas)
+composer require laravel-lang/publisher (Comando anterior)
+php artisan lang:add en es ca eu gl

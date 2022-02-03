@@ -19,7 +19,7 @@
         <div>
         
         <div class="form-group m-2">                                                       
-            <label>Nombre: <br> <input class="form-control" type="text" name="name" value="{{ old('name',$centro->name)}}" required></label>
+            <label>@lang('Name'): <br> <input class="form-control" type="text" name="name" value="{{ old('name',$centro->name)}}" required></label>
             @error('name')
                 <br>
                 <small class="text-danger">*{{$message}}</small>
@@ -28,7 +28,7 @@
         </div>
         
         <div class="form-group m-2">
-            <label>Capacidad: <br> <input type="number" class="form-control" name="capacidad" value="{{ old('capacidad',$centro->capacidad) }}" required></label>
+            <label>@lang('Capacity'): <br> <input type="number" class="form-control" name="capacidad" value="{{ old('capacidad',$centro->capacidad) }}" required></label>
             @error('capacidad')
                 <br>
                 <small class="text-danger">*{{$message}}</small>
@@ -37,7 +37,7 @@
         </div>
         
         <div class="form-group m-2">
-            <label>Fundado: <br> <input type="date" class="form-control" name="fundado" value="{{ old('fundado', $centro->fundado) }}"></label>
+            <label>@lang('Founded'): <br> <input type="date" class="form-control" name="fundado" value="{{ old('fundado', $centro->fundado) }}"></label>
             @error('fundado')
                 <br>
                 <small class="text-danger">*{{$message}}</small>
@@ -46,7 +46,7 @@
         </div>
         
         <div class="form-group m-2">
-            <label>Entidad:</label>
+            <label>@lang('Entity'):</label>
             <br>                                                                
                 <label>Pública<input type="radio" name="entidad" value="publica" {{ old('entidad', $centro->entidad)=="publica" ? 'checked='.'"checked"' : '' }} ></label><br>
                 <label>Privada<input type="radio" name="entidad" value="privada" {{old('entidad',  $centro->entidad) == "privada" ? 'checked='.'"checked"' : '' }}></label><br>
@@ -60,7 +60,7 @@
         </div>
         
         <div class="form-group m-2">
-            <label>Extra Escolar:</label>
+            <label>@lang('Extraescolar'):</label>
             <br>
             <label for="extraescolar">Selecciona</label>
             <br>
@@ -73,7 +73,7 @@
         </div>
         
         <div class="form-group m-2">
-            <label>Descripcion:</label>
+            <label>@lang('Description'):</label>
             <br>
             <textarea name="descripcion" rows="5" required>
                 {{{ old('descripcion',$centro->descripcion) }}}
@@ -87,7 +87,7 @@
         </div>
         
         <div class="form-group m-2">
-            <label>Terminos:</label>
+            <label>@lang('Terms of Service'):</label>
                 
             <input type="checkbox" value="true" name="terminos" {{ old('terminos', $centro->terminos) === 'true' ? 'checked='.'"checked"' : '' }}>
 
@@ -98,7 +98,7 @@
             @enderror
         </div>
         <input type="hidden" name="user_id" id="user_id" class="form-control" value="{{ Auth::user()->id}}">
-        <button type="submit" class="btn btn-success p-1 m-2">Editar</button>
+        <button type="submit" class="btn btn-success p-1 m-2">@lang('Edit')</button>
         <button class="btn btn-danger p-1 mb-2"><a class="text-white" href="{{route('centros.show',$centro->id)}}">Eliminar centro</a></button>
     </form>
 </div>

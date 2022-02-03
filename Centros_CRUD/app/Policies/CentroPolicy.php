@@ -38,9 +38,9 @@ class CentroPolicy
      */
     public function view(User $user, Centro $centro)
     {
-        // if($user->id === $centro->user_id){
-        //     return true;
-        // }
+        if($user->id === $centro->user_id){
+            return true;
+        }
     }
 
     /**
@@ -49,9 +49,11 @@ class CentroPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user): bool
+    public function create(User $user)
     {
-        return $user->user_role === 'user';
+        if($user->user_role !== 'viewer') {
+            return true;
+        }
     }
 
     /**
@@ -61,6 +63,12 @@ class CentroPolicy
      * @param  \App\Models\Centro  $centro
      * @return \Illuminate\Auth\Access\Response|bool
      */
+    public function edit(User $user, Centro $centro)
+    {
+        if($user->id === $centro->user_id){
+            return true;
+        }
+    }
     public function update(User $user, Centro $centro)
     {
         if($user->id === $centro->user_id){
@@ -77,7 +85,7 @@ class CentroPolicy
      */
     public function delete(User $user, Centro $centro)
     {
-        if($user->id === $centro->user_id){
+        if($user->id == $centro->user_id){
             return true;
         }
     }

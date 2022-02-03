@@ -12,7 +12,7 @@
                 <th scope="col">Fundado</th>
                 <th>
                     @can('create', \App\Models\Centro::class)
-                        <button class="btn btn-primary"><a class="text-white" href="{{route('centros.create')}}">Crear centro</a></button>
+                        <button class="btn btn-primary"><a class="text-white" href="{{route('centros.create')}}">@lang('Create')</a></button>
                     @endcan  
                 </th>      
             </tr>
@@ -26,7 +26,7 @@
                 <td>{{ $centro->fundado}}</td>
                 <td>
                 @can('update', $centro)
-                    <a href="{{route('centros.edit', $centro->id)}}"><button class="btn btn-primary">Editar</button></a>
+                    <a href="{{route('centros.edit', $centro->id)}}"><button class="btn btn-primary">@lang('Edit')</button></a>
                 @endcan
 
                 @cannot('update', $centro)
@@ -34,7 +34,7 @@
                 @endcannot
 
                 @can('delete', $centro)
-                    <button class="btn btn-danger"><a class="text-white" href="{{route('centros.show',$centro->id)}}">Eliminar</a></button>
+                    <button class="btn btn-danger"><a class="text-white" href="{{route('centros.show',$centro->id)}}">@lang('Delete')</a></button>
                 @endcan
 
                 @cannot('delete', $centro)

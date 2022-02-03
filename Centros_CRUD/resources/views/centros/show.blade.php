@@ -15,7 +15,7 @@
             </ul>
             <p>
         </div>
-        <button type="submit" class="btn btn-danger p-1 mb-2">Eliminar</button>
+        <button type="submit" class="btn btn-danger p-1 mb-2">@lang('Delete')</button>
     </form>
 </div>
 @endsection

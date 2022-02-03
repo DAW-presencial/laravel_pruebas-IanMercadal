@@ -30,7 +30,7 @@ class CentroController extends Controller
      */
     public function create(Centro $centro)
     {
-        $this->authorize('create',Contacto::class);
+        $this->authorize('create',$centro);
         return view('centros.create', compact('centro'));
     }
 
@@ -58,7 +58,7 @@ class CentroController extends Controller
      */
     public function show(Centro $centro)
     {
-        $this->authorize('view',Contacto::class);
+        $this->authorize('view',$centro);
         return view('centros.show',compact('centro'));
     }
 
@@ -70,6 +70,7 @@ class CentroController extends Controller
      */
     public function edit(Centro $centro)
     {
+        $this->authorize('edit',$centro);
         return view('centros.edit',compact('centro'));
     }
 
@@ -82,6 +83,7 @@ class CentroController extends Controller
      */
     public function update(Request $request, Centro $centro)
     {
+        $this->authorize('update',$centro);
         $centro->update($request->all());
         return redirect()->route('centros.index', $centro);
     }
@@ -94,7 +96,7 @@ class CentroController extends Controller
      */
     public function destroy(Centro $centro)
     {
-        $this->authorize('delete',Contacto::class);
+        $this->authorize('delete', $centro);
         $centro->delete();
         return redirect()->route('centros.index');
     }
