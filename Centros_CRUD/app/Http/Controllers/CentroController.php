@@ -18,8 +18,8 @@ class CentroController extends Controller
     {
         // $this->authorize('viewAny', Centro::class, User::class);
 
-        // $centros = Centro::where('user_id', Auth::id())->get();
-        $centros = Centro::all();
+        $centros = Centro::where('user_id', Auth::id())->get();
+        // $centros = Centro::all();
         return view('centros.index', compact('centros'));
     }
 
