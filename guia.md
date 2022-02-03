@@ -43,12 +43,10 @@ composer require doctrine/dbal (renombrar columna)
 php artisan make:seeder xSeeder
 
 - Llenas con:
-  -  $curso = new Curso();
-  -  $curso->name = "Laravel"
-  - ...
-  -  $curso->save()
-- Otro modo es llamar desde databaseSeeder
-    - $this call ..
+  -  Un array como $usuarios = [[ "name" = ... ]] en la función run
+  - DB::table('users')->insert($users); esto va tras el array
+  -  $this->call([UserSeeder::class]); esto va en el databaseSeeder
+  - Comando para insertarlos es php artisan db:seed
 
 ## Factory
 1. - php artisan make:factory xFactory

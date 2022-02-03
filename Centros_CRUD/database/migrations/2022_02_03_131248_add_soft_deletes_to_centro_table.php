@@ -25,7 +25,7 @@ class AddSoftDeletesToCentroTable extends Migration
      */
     public function down()
     {
-        Schema::table('centro', function (Blueprint $table) {
+        Schema::table('centros', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
     }
