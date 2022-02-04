@@ -29,6 +29,7 @@ class StoreRequest extends FormRequest
             'descripcion' => 'required|min:10|max:254',
             'fundado' => 'required',
             'entidad' => 'required',
+            'thumbnail' => 'image|max:1024|mimes:jpg,jpeg,svg',
             'terminos'=>'required'
         ];
     }

@@ -4,7 +4,7 @@
 @section('content')
 <h2 class="text-center">Editar Centro</h2>
 <div class="continer d-flex justify-content-center">
-    <form class="form border border-secondary text-start bg-light m-2 w-75" action="{{route('centros.update', $centro)}}" method="post">
+    <form class="form border border-secondary text-start bg-light m-2 w-75" action="{{route('centros.update', $centro)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
         <div>

@@ -6,6 +6,7 @@ use App\Models\Centro;
 use App\Models\Contacto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CentroController extends Controller
 {
@@ -45,7 +46,6 @@ class CentroController extends Controller
         $centro = Centro::create($request->all());
         // DB::table('centros')->where('campo', valor)->get();
 
-        // var_dump($request->all());
         // Ya lo hace automatico el create $centro->save();
         return redirect()->route('centros.index', $centro);
     }

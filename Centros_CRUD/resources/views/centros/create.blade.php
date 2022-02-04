@@ -4,7 +4,7 @@
 @section('content')
 <h2 class="text-center">Crear Centro</h2>
 <div class="continer d-flex justify-content-center">
-    <form class="form border border-secondary text-start bg-light m-2 w-75" action="{{route('centros.store', $centro)}}" method="post">
+    <form class="form border border-secondary text-start bg-light m-2 w-75" action="{{route('centros.store', $centro)}}" method="post" enctype="multipart/form-data">
         @csrf
         <div>
             @foreach ($errors->all() as $error)
@@ -79,6 +79,18 @@
             </textarea>
         
             @error('descripcion')
+                <br>
+                <small class="text-danger">*{{$message}}</small>
+                <br>
+            @enderror
+        </div>
+
+        <div class="form-group m-2">
+            <label>@lang('Thumbnail'):</label>
+                
+            <input type="file" class="form-control-file" name="thumbnail">
+
+            @error('thumbnail')
                 <br>
                 <small class="text-danger">*{{$message}}</small>
                 <br>
