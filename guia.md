@@ -62,8 +62,23 @@ Poner en filleable los campos de la bd, deben llamarse igual los input names que
 
 protected $fillable = ['name','terminos'=> 'boolean'];
 
+## Gates
+- En App\Providers\AuthServiceProvider metes esto:
+
+Gate::define('update-post', function (User $user, Post $post) {
+     return $user->id === $post->user_id;
+});
+
+- Controlador
+
+if (! Gate::allows('update-post', $post)) {
+    abort(403);
+}
+
 ## Policies
-php artisan make:policy PostPolicy --model=Post
+- php artisan make:policy PostPolicy --model=Post
+- En App\Providers\AuthServiceProvider metes esto:
+- return $user->id === $post->user_id;
 
 
 ## Listar routes
@@ -80,9 +95,17 @@ Config - app.php
 // Ej: español
 'locale'          => 'es',
 
-Utilizar plantilla ya hecha en CRUD_GUIA ya que tiene botones que cambian el idioma
+Utilizar plantilla ya hecha en practica_auth
 
 Modo rafa:
-composer require laravel-lang/lang (Idiomas)
-composer require laravel-lang/publisher (Comando anterior)
-php artisan lang:add en es ca eu gl
+- composer require laravel-lang/lang (Idiomas)
+- composer require laravel-lang/publisher (Comando anterior)
+- php artisan lang:add en es ca eu gl
+
+## Despliegue
+- cp .env-example .env
+- nano .env y pones credenciales
+- chmod -R 777 storage
+- composer update
+- php artisan storage:link
+- <td> <img src="{{asset("image/". $post->image) }}" width="150px"></td>
