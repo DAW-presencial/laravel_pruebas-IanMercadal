@@ -117,6 +117,7 @@ Config - app.php
 'locale'          => 'es',
 
 Utilizar plantilla ya hecha en practica_auth
+https://www.laravelcode.com/post/laravel-8-create-multi-language-website
 
 Modo rafa:
 - composer require laravel-lang/lang (Idiomas)
