@@ -126,6 +126,7 @@ Modo rafa:
 ## Despliegue
 - cp .env-example .env
 - nano .env y pones credenciales
+- FILESYSTEM_DRIVER=public
 - composer update
 - chmod -R 777 storage
 - php artisan storage:link
