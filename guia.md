@@ -1,8 +1,7 @@
 # Guía de comandos Laravel
 
 ## Crear proyecto
-composer create-project laravel/laravel x
-
+composer create-project laravel/laravel miproyecto "8.*"
 ## Breeze
 1. - composer require laravel/breeze --dev
 2. - php artisan breeze:install
@@ -86,8 +85,8 @@ protected $fillable = ['name','terminos'=> 'boolean'];
 ## Gates
 - En App\Providers\AuthServiceProvider metes esto:
 
-Gate::define('update-post', function (User $user, Post $post) {
-     return $user->id === $post->user_id;
+Gate::define('update-post', function (User $user, Centro $centro) {
+     return $user->id === $centro->user_id;
 });
 
 - Controlador
@@ -116,7 +115,7 @@ Config - app.php
 // Ej: español
 'locale'          => 'es',
 
-Utilizar plantilla ya hecha en practica_auth
+Utilizar plantilla ya hecha en practica_auth y segui guía (no poner \ de la guía)
 https://www.laravelcode.com/post/laravel-8-create-multi-language-website
 
 Modo rafa:
@@ -127,7 +126,7 @@ Modo rafa:
 ## Despliegue
 - cp .env-example .env
 - nano .env y pones credenciales
-- chmod -R 777 storage
 - composer update
+- chmod -R 777 storage
 - php artisan storage:link
 - <td> <img src="{{asset("image/". $post->image) }}" width="150px"></td>
