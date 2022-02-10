@@ -47,6 +47,27 @@ php artisan make:seeder xSeeder
   - DB::table('users')->insert($users); esto va tras el array
   -  $this->call([UserSeeder::class]); esto va en el databaseSeeder
   - Comando para insertarlos es php artisan db:seed
+  - Sentencia RAW: 
+ DB::insert('insert into centros (name, descripcion, capacidad, fundado, entidad, terminos, user_id, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?)', array('Borja Moll', 'decripcion de prueba', 1200, '2022-01-13', 'Publica', true, 2, Carbon::now(), Carbon::now()));
+
+- QueryBuilder 
+        $centros = [
+            'name' => 'Santa Mónica',
+            'descripcion' => 'Cualquier texto',
+            'capacidad' => 1200,
+            'fundado' => '2022-01-01',
+            'entidad' => 'Concertada',
+            'extraescolar' => baile,
+            'terminos' => true,
+            "user_id" => 1,
+            "created_at" => Carbon::now(), # new \Datetime()
+            "updated_at" => Carbon::now(),  # new \Datetime()
+        ];
+        
+DB::table('centros')->insert($centros);
+
+- Eloquent:
+        Centro::factory(1)->create();
 
 ## Factory
 1. - php artisan make:factory xFactory
