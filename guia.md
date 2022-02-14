@@ -126,7 +126,11 @@ Modo rafa:
 ## API REST
 
 - Rutas van en routes/api.php
-- 
+
+SANCTUM:
+- composer require laravel/sanctum
+- php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+- php artisan migrate
 
 ## Despliegue
 - cp .env-example .env
