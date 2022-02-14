@@ -123,6 +123,8 @@ Modo rafa:
 - composer require laravel-lang/publisher (Comando anterior)
 - php artisan lang:add en es ca eu gl
 
+## API REST
+
 ## Despliegue
 - cp .env-example .env
 - nano .env y pones credenciales
