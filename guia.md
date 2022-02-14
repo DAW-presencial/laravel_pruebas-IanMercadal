@@ -125,6 +125,9 @@ Modo rafa:
 
 ## API REST
 
+- Rutas van en routes/api.php
+- 
+
 ## Despliegue
 - cp .env-example .env
 - nano .env y pones credenciales
