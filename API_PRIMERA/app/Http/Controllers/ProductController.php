@@ -12,9 +12,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Product::all();
+        $products = Product::all();
+        return view('api.index', compact('products'));
     }
 
     /**
@@ -42,7 +43,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return Product::find($id);
+        $product = Product::find($id);
+        return view('api.show', compact('product'));
     }
 
     /**
