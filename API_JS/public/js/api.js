@@ -7,7 +7,7 @@ const editarBoton = document.querySelector('.editar');
 
 document.addEventListener('DOMContentLoaded', mostrarClientes);
 
-listado.addEventListener('click', editarContacto);
+listado.addEventListener('click', obtenerClienteId);
 listado.addEventListener('click', confirmarEliminar);
 listado.addEventListener('click', showCliente);
 
@@ -57,6 +57,7 @@ const obtenerClientes = async () => {
 }
 
 function showCliente(e) {
+    let idCliente = document.querySelector('#idCliente');
     let showCliente = document.querySelector('#showCliente');
     let nombreShow = document.querySelector('#nombreShow');
     let apellidoShow = document.querySelector('#apellidoShow');
@@ -68,8 +69,9 @@ function showCliente(e) {
         let clientes = listado.childNodes;
 
         clientes.forEach(cliente => {
-    
             if(clienteId == cliente.childNodes[1].innerText){
+                
+                idCliente.value = cliente.childNodes[1].textContent
                 nombreShow.innerHTML = cliente.childNodes[3].textContent;
                 apellidoShow.innerHTML = cliente.childNodes[5].textContent;
                 nacimientoShow.innerHTML = cliente.childNodes[7].textContent;
@@ -117,8 +119,27 @@ const nuevoCliente = async cliente => {
 }
 
 // Editar Contacto
+const formularioEditar = document.querySelector('#formularioUpdate');
+formularioEditar.addEventListener('submit', updateCliente);
 
-function editarContacto(e) {
+function updateCliente(e) {
+    e.preventDefault();
+
+    const id = document.querySelector('#idCliente').value;
+    const nombre = document.querySelector('#nombreUpdate').value;
+    const apellido = document.querySelector('#apellidoUpdate').value;
+    const nacimiento = document.querySelector('#nacimientoUpdate').value;
+
+    const cliente = {
+        id,
+        nombre,
+        apellido,
+        nacimiento,
+    };
+    insertarCliente(cliente);
+}
+
+function obtenerClienteId(e) {
     if(e.target.classList.contains('editar')) {
         const cliente = parseInt(e.target.dataset.cliente);
         editarCliente(cliente)
@@ -126,22 +147,38 @@ function editarContacto(e) {
 }
 
 function editarCliente(clienteId) {
+    let idShow = document.querySelector('#idCliente');
     let nombreShow = document.querySelector('#nombreUpdate');
     let apellidoShow = document.querySelector('#apellidoUpdate');
     let nacimientoShow = document.querySelector('#nacimientoUpdate');
 
     let clientes = listado.childNodes;
+ 
     clientes.forEach(cliente => {
-        console.log(cliente.childNodes)
-        // console.log(cliente.childNodes[0].textContent)
-
-        if(clienteId == cliente.childNodes[1].innerText){
-            nombreShow.value = cliente.childNodes[3].textContent;
-            apellidoShow.value = cliente.childNodes[5].textContent;
-            nacimientoShow.innerHTML = cliente.childNodes[7].textContent;
-        }
         
+        if(clienteId == cliente.childNodes[1].innerText){
+            idShow.value = cliente.childNodes[1].textContent.trim();
+            nombreShow.value = cliente.childNodes[3].textContent.trim();
+            apellidoShow.value = cliente.childNodes[5].textContent.trim();
+            let apellido = cliente.childNodes[7].textContent.trim();
+            nacimientoShow.value = apellido
+        }
     });
+}
+
+const insertarCliente = async cliente => {
+    try{
+        await fetch(`${url}/${cliente.id}`,{
+            method: 'PUT',
+            body: JSON.stringify(cliente),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        location.reload();
+    }catch (error) {
+        console.log(error)
+    }
 }
 
 // Eliminar Contacto

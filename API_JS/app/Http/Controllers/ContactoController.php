@@ -16,7 +16,7 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        $contactos = Contacto::all();
+        $contactos = Contacto::orderBy('id')->get();
         return $contactos;
     }
 
@@ -72,7 +72,6 @@ class ContactoController extends Controller
      */
     public function destroy($id)
     {
-       
         return Contacto::destroy($id);
     }
 }

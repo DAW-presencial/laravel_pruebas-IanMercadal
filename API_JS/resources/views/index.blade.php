@@ -66,6 +66,7 @@
         
                     <h2>Formulario Editar</h2>
             
+                    <input type="hidden" id="idCliente">
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="nombreUpdate">Nombre</label>
                         <input id="nombreUpdate" name="nombreUpdate" type="text" placeholder="Nombre Cliente"/>
@@ -78,7 +79,7 @@
             
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="nacimientoUpdate">Nacimiento</label>
-                        <p id="nacimientoUpdate"><p>
+                        <input id="nacimientoUpdate" type="date">
                     </div>
             
                     <input type="submit" class="btn btn-success" value="Editar Cliente"/>
