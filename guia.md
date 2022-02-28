@@ -125,7 +125,27 @@ Modo rafa:
 
 ## API REST
 
+### Parte Servidor
+
+### WEB.php
+- Ruta básica que devuelva el index de blade
+
+### API.php
 - Rutas van en routes/api.php
+- Route::ApiResource('/x', x::class);
+
+### API Controller
+- Solo devuelve colecciones, no vistas
+- En el store, pon todos los campos, da problemas con request all.
+
+## Model
+- Crear fillable
+
+### Parte Cliente
+
+### FETCH
+- La vairable URL debe apuntar en el despliegue a la url, por ejemplo: imercadal_exa.randion.es/public/api/contactos
+- No se debe indicar ruta para redirigir, se hace window.onload.
 
 SANCTUM:
 - composer require laravel/sanctum
@@ -138,5 +158,6 @@ SANCTUM:
 - FILESYSTEM_DRIVER=public
 - composer update
 - chmod -R 777 storage
+- CAMBIAR RUTA URL DEL JS!!!
 - php artisan storage:link
 - <td> <img src="{{asset("image/". $post->image) }}" width="150px"></td>
